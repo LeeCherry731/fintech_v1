@@ -1,6 +1,6 @@
 import 'package:fintech_v1/constants/CustomFontMontserrat.dart';
 
-import 'package:fintech_v1/features/splash/screans/animate_splash.dart';
+import 'package:fintech_v1/features/splash/screens/animate_splash.dart';
 
 import 'package:fintech_v1/router.dart';
 import 'package:flutter/material.dart';

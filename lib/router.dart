@@ -1,5 +1,5 @@
 import 'package:fintech_v1/constants/MyImage.dart';
-import 'package:fintech_v1/home.dart';
+import 'package:fintech_v1/features/home/screens/home.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {

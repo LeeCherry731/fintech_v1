@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:fintech_v1/common/widgets/TextBoxTransition.dart';
 import 'package:fintech_v1/constants/MyImage.dart';
-import 'package:fintech_v1/home.dart';
+import 'package:fintech_v1/features/home/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class AnimateSplash extends StatefulWidget {
@@ -18,7 +18,7 @@ class _AnimateSplashState extends State<AnimateSplash> {
     super.initState();
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushNamed(context, Home.routeName),
+      () => Navigator.pushReplacementNamed(context, Home.routeName),
     );
   }
 
