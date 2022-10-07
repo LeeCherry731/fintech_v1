@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:fintech_v1/constants/CustomImage.dart';
+import 'package:fintech_v1/common/widgets/TextBoxTransition.dart';
+import 'package:fintech_v1/constants/MyImage.dart';
 import 'package:fintech_v1/home.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class _AnimateSplashState extends State<AnimateSplash> {
               const SizedBox(
                 height: 100,
               ),
-              Image.asset(CustomImage.logo),
+              Image.asset(MyImage.logo),
               const SizedBox(
                 height: 20,
               ),
@@ -56,7 +57,10 @@ class _AnimateSplashState extends State<AnimateSplash> {
               const CircularProgressIndicator(
                 strokeWidth: 4,
                 color: Colors.white70,
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

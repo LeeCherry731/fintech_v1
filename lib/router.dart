@@ -1,4 +1,4 @@
-import 'package:fintech_v1/constants/CustomImage.dart';
+import 'package:fintech_v1/constants/MyImage.dart';
 import 'package:fintech_v1/home.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +14,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => Container(
           decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(CustomImage.logo), scale: 0.7),
+            image: DecorationImage(image: AssetImage(MyImage.logo), scale: 0.7),
             gradient: RadialGradient(colors: [
               Color(0xFF80353A),
               Color(0xFF5C181D),

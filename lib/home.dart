@@ -20,6 +20,28 @@ class Home extends StatelessWidget {
               Column(
                 children: const [
                   SizedBox(
+                    height: 22,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Icon(Icons.access_time_outlined, size: 28),
+                  ),
+                ],
+              ),
+              Column(
+                children: const [
+                  SizedBox(
+                    height: 22,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Icon(Icons.notifications, size: 28),
+                  ),
+                ],
+              ),
+              Column(
+                children: const [
+                  SizedBox(
                     height: 4,
                   ),
                   Text("TH"),
@@ -41,13 +63,27 @@ class Home extends StatelessWidget {
               Color(0xFF5C181D),
             ], radius: 0.9),
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text("Custom Font", style: TextStyle(fontFamily: "Montserrat")),
-              ],
-            ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 100,
+              ),
+              Center(
+                child: SingleChildScrollView(
+                    child: Container(
+                  padding: const EdgeInsets.only(top: 40),
+                  width: MediaQuery.of(context).size.width - 8,
+                  height: MediaQuery.of(context).size.height - 170,
+                  decoration: const BoxDecoration(
+                    gradient: RadialGradient(colors: [
+                      Color.fromARGB(255, 243, 237, 181),
+                      Color.fromARGB(255, 246, 208, 59),
+                    ], radius: 0.9),
+                  ),
+                  child: null,
+                )),
+              ),
+            ],
           ),
         ),
       ),
