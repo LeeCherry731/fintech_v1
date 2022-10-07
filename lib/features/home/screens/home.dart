@@ -1,17 +1,58 @@
 import 'package:fintech_v1/features/home/widgets/ListProfileInfo.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   static const String routeName = "/home";
   const Home({
     super.key,
   });
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int currentIndex = 0;
+
+  List<Widget> screens = [
+    const Center(
+      child: Text(
+        "Home",
+        style: TextStyle(fontSize: 50),
+      ),
+    ),
+    const Center(
+      child: Text(
+        "2",
+        style: TextStyle(fontSize: 50),
+      ),
+    ),
+    const Center(
+      child: Text(
+        "3",
+        style: TextStyle(fontSize: 50),
+      ),
+    ),
+    const Center(
+      child: Text(
+        "4",
+        style: TextStyle(fontSize: 50),
+      ),
+    ),
+  ];
+
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomNavBar(),
+        bottomNavigationBar:
+            BottomNavBar(onTap: onTap, currentIndex: currentIndex),
         extendBodyBehindAppBar: true,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(80.0),
@@ -65,50 +106,22 @@ class Home extends StatelessWidget {
               Color(0xFF5C181D),
             ], radius: 0.9),
           ),
-          child: ListProfileInfo(),
+          child: ListProfileInfo(widget: screens[currentIndex]),
         ),
       ),
     );
   }
 }
 
-class BottomNavBar extends StatefulWidget {
+class BottomNavBar extends StatelessWidget {
+  final Function onTap;
+  final int currentIndex;
   const BottomNavBar({
     Key? key,
+    required this.onTap,
+    required this.currentIndex,
   }) : super(key: key);
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<BottomNavBar> {
-  int currentIndex = 0;
-  final screens = [
-    const Center(
-      child: Text(
-        "Home",
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
-    const Center(
-      child: Text(
-        "Buy/Sell",
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
-    const Center(
-      child: Text(
-        "Portfollio",
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
-    const Center(
-      child: Text(
-        "Account",
-        style: TextStyle(fontSize: 60),
-      ),
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -151,7 +164,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           SizedBox(
             height: 90,
             child: BottomNavigationBar(
-              unselectedItemColor: Color.fromARGB(255, 245, 203, 131),
+              unselectedItemColor: const Color.fromARGB(255, 245, 203, 131),
               unselectedLabelStyle: const TextStyle(
                   color: Color.fromARGB(255, 247, 181, 66), fontSize: 14),
               type: BottomNavigationBarType.fixed,
@@ -162,9 +175,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   color: Color.fromARGB(255, 247, 181, 66), fontSize: 20),
               backgroundColor: Colors.transparent,
               currentIndex: currentIndex,
-              onTap: (index) => setState(
-                () => currentIndex = index,
-              ),
+              onTap: (index) {
+                onTap(index);
+              },
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home_outlined),

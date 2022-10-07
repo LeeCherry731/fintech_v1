@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ListProfileInfo extends StatelessWidget {
+  final Widget widget;
   const ListProfileInfo({
     Key? key,
+    required this.widget,
   }) : super(key: key);
 
   @override
@@ -25,7 +27,7 @@ class ListProfileInfo extends StatelessWidget {
                 Color.fromARGB(255, 255, 235, 155),
               ], radius: 0.9),
             ),
-            child: null,
+            child: widget,
           )),
         ),
       ],
