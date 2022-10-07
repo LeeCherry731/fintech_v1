@@ -1,6 +1,14 @@
+import 'package:fintech_v1/constants/CustomFontMontserrat.dart';
+
+import 'package:fintech_v1/features/splash/screans/animate_splash.dart';
+
+import 'package:fintech_v1/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   runApp(const MyApp());
 }
 
@@ -14,47 +22,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: CustomFontMontserrat.fontFamily,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Text(widget.title),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/logo.png"), scale: 0.5),
-          gradient: RadialGradient(colors: [
-            Color(0xFF80353A),
-            Color(0xFF5C181D),
-          ], radius: 0.9),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[],
-          ),
-        ),
-      ),
+      home: const AnimateSplash(),
+      onGenerateRoute: (settings) => generateRoute(settings),
     );
   }
 }
