@@ -1,3 +1,4 @@
+import 'package:fintech_v1/features/home/screens/test_socket.dart';
 import 'package:fintech_v1/features/home/widgets/ListProfileInfo.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +16,7 @@ class _HomeState extends State<Home> {
   int currentIndex = 0;
 
   List<Widget> screens = [
-    const Center(
-      child: Text(
-        "Home",
-        style: TextStyle(fontSize: 50),
-      ),
-    ),
+    const TestSocket(),
     const Center(
       child: Text(
         "2",
@@ -49,64 +45,22 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar:
-            BottomNavBar(onTap: onTap, currentIndex: currentIndex),
-        extendBodyBehindAppBar: true,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(80.0),
-          child: AppBar(
-            elevation: 2,
-            backgroundColor: Colors.transparent,
-            actions: [
-              Column(
-                children: const [
-                  SizedBox(
-                    height: 22,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Icon(Icons.access_time_outlined, size: 28),
-                  ),
-                ],
-              ),
-              Column(
-                children: const [
-                  SizedBox(
-                    height: 22,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Icon(Icons.notifications, size: 28),
-                  ),
-                ],
-              ),
-              Column(
-                children: const [
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text("TH"),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Icon(Icons.menu, size: 30),
-                  ),
-                ],
-              ),
-            ],
-          ),
+    return Scaffold(
+      bottomNavigationBar:
+          BottomNavBar(onTap: onTap, currentIndex: currentIndex),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/logo.png"), scale: 0.7),
+          gradient: RadialGradient(colors: [
+            Color(0xFF80353A),
+            Color(0xFF5C181D),
+          ], radius: 0.9),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/logo.png"), scale: 0.7),
-            gradient: RadialGradient(colors: [
-              Color(0xFF80353A),
-              Color(0xFF5C181D),
-            ], radius: 0.9),
-          ),
-          child: ListProfileInfo(widget: screens[currentIndex]),
+        child: Column(
+          children: [
+            ListProfileInfo(widget: screens[currentIndex]),
+          ],
         ),
       ),
     );
@@ -142,7 +96,7 @@ class BottomNavBar extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-              top: -27,
+              top: -18,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -154,7 +108,7 @@ class BottomNavBar extends StatelessWidget {
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    stops: [0.1, 0.8, 0.1],
+                    // stops: [0.1, 0.8, 0.1],
                     tileMode: TileMode.clamp,
                   ),
                 ),
@@ -166,13 +120,18 @@ class BottomNavBar extends StatelessWidget {
             child: BottomNavigationBar(
               unselectedItemColor: const Color.fromARGB(255, 245, 203, 131),
               unselectedLabelStyle: const TextStyle(
-                  color: Color.fromARGB(255, 247, 181, 66), fontSize: 14),
+                  color: Color.fromARGB(255, 247, 181, 66),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400),
               type: BottomNavigationBarType.fixed,
               iconSize: 45,
               selectedItemColor: const Color.fromARGB(255, 253, 253, 253),
               showSelectedLabels: true,
               selectedLabelStyle: const TextStyle(
-                  color: Color.fromARGB(255, 247, 181, 66), fontSize: 20),
+                color: Color.fromARGB(255, 247, 181, 66),
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
               backgroundColor: Colors.transparent,
               currentIndex: currentIndex,
               onTap: (index) {
