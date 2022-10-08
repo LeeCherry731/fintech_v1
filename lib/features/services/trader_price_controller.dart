@@ -27,14 +27,49 @@ class TraderPriceController extends GetxController {
     socket.connect();
     socket.onConnect((data) => print("Socket connected"));
     print(socket.connected);
-    // socket.emit("test", "hello world");
     socket.on("traderprice", (data) {
-      print("change price!!!");
-
       traderPrice = TraderPrice.fromJson(data);
-      // print(data['bid'].toString());
+      print(data['bid'].toString());
       update();
     });
+  }
+
+  void reset1() {
+    print("reset1");
+    traderPrice.bid = 0;
+    print(traderPrice.bid);
+  }
+
+  void reset2() {
+    print("reset2");
+    traderPrice = TraderPrice(
+        bid: 2,
+        ask: 2,
+        ask99Bg1: 2,
+        bid99Bg1: 2,
+        ask96Bg1: 2,
+        bid96Bg1: 2,
+        thb: 2,
+        askAss: 2,
+        bidAss: 2,
+        status: 'pending',
+        spotno: 2);
+  }
+
+  void reset3() {
+    print("reset3");
+    traderPrice = TraderPrice(
+        bid: 3,
+        ask: 3,
+        ask99Bg1: 3,
+        bid99Bg1: 3,
+        ask96Bg1: 3,
+        bid96Bg1: 3,
+        thb: 3,
+        askAss: 3,
+        bidAss: 3,
+        status: 'pending',
+        spotno: 3);
   }
 
   void disconnect() {

@@ -22,7 +22,6 @@ class _TestSocketState extends State<TestSocket> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
     traderPriceController.connect();
     Timer(
       Duration(seconds: 3),
@@ -39,21 +38,104 @@ class _TestSocketState extends State<TestSocket> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        ListTile(
-          title: const Text("Bid"),
-          subtitle: Text(traderPriceController.traderPrice.bid.toString()),
-        ),
-        ListTile(
-          title: const Text("Ask"),
-          subtitle: Text(traderPriceController.traderPrice.ask.toString()),
-        ),
-        ListTile(
-          title: const Text("THB"),
-          subtitle: Text(traderPriceController.traderPrice.thb.toString()),
-        ),
-      ],
-    );
+    return GetBuilder(
+        init: TraderPriceController(),
+        builder: (Controller) {
+          return ListView(
+            children: [
+              ListTile(
+                title: const Text("bid"),
+                subtitle: Text(Controller.traderPrice.bid.toString()),
+                onTap: () {
+                  // traderPriceController.reset1();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("ask"),
+                subtitle: Text(Controller.traderPrice.ask.toString()),
+                onTap: () {
+                  // traderPriceController.reset2();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("ask99Bg1"),
+                subtitle: Text(Controller.traderPrice.ask99Bg1.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("bid99Bg1"),
+                subtitle: Text(Controller.traderPrice.bid99Bg1.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("ask96Bg1"),
+                subtitle: Text(Controller.traderPrice.ask96Bg1.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("bid96Bg1"),
+                subtitle: Text(Controller.traderPrice.bid96Bg1.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("thb"),
+                subtitle: Text(Controller.traderPrice.thb.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("askAss"),
+                subtitle: Text(Controller.traderPrice.askAss.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("bidAss"),
+                subtitle: Text(Controller.traderPrice.bidAss.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("status"),
+                subtitle: Text(Controller.traderPrice.status.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              ListTile(
+                title: const Text("spotno"),
+                subtitle: Text(Controller.traderPrice.spotno.toString()),
+                onTap: () {
+                  // traderPriceController.reset3();
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              )
+            ],
+          );
+        });
   }
 }
