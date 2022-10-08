@@ -101,8 +101,7 @@ class ListProfileInfo extends StatelessWidget {
           ),
         ),
         Center(
-          child: SingleChildScrollView(
-              child: Container(
+          child: Container(
             padding: const EdgeInsets.only(top: 40),
             width: MediaQuery.of(context).size.width - 8,
             height: MediaQuery.of(context).size.height - 200,
@@ -114,7 +113,7 @@ class ListProfileInfo extends StatelessWidget {
               ], radius: 0.9),
             ),
             child: widget,
-          )),
+          ),
         ),
       ],
     );

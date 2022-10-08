@@ -5,6 +5,7 @@ import 'package:fintech_v1/features/splash/screens/animate_splash.dart';
 import 'package:fintech_v1/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(

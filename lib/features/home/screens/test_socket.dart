@@ -1,6 +1,12 @@
+import 'dart:async';
+
+import 'package:fintech_v1/features/models/trader_price.dart';
+import 'package:fintech_v1/features/services/trader_price_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class TestSocket extends StatefulWidget {
   const TestSocket({super.key});
@@ -10,35 +16,44 @@ class TestSocket extends StatefulWidget {
 }
 
 class _TestSocketState extends State<TestSocket> {
-  late IO.Socket socket;
+  final traderPriceController = Get.put(TraderPriceController());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    connect();
+
+    traderPriceController.connect();
+    Timer(
+      Duration(seconds: 3),
+      () => null,
+    );
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    socket.disconnect();
-  }
-
-  void connect() {
-    socket = IO.io("http://203.154.83.135:25551", <String, dynamic>{
-      "transports": ["websocket"],
-      "autoConnect": false,
-    });
-    socket.connect();
-    socket.onConnect((data) => print("Socket connected"));
-    print(socket.connected);
-    // socket.emit("test", "hello world");
+    traderPriceController.disconnect();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView(
+      children: [
+        ListTile(
+          title: const Text("Bid"),
+          subtitle: Text(traderPriceController.traderPrice.bid.toString()),
+        ),
+        ListTile(
+          title: const Text("Ask"),
+          subtitle: Text(traderPriceController.traderPrice.ask.toString()),
+        ),
+        ListTile(
+          title: const Text("THB"),
+          subtitle: Text(traderPriceController.traderPrice.thb.toString()),
+        ),
+      ],
+    );
   }
 }
