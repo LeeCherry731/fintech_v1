@@ -23,10 +23,10 @@ class _TestSocketState extends State<TestSocket> {
     // TODO: implement initState
     super.initState();
     traderPriceController.connect();
-    Timer(
-      Duration(seconds: 3),
-      () => null,
-    );
+    Timer(Duration(seconds: 5), () {
+      traderPriceController.connect();
+      traderPriceController.onTraderprice();
+    });
   }
 
   @override
@@ -41,95 +41,317 @@ class _TestSocketState extends State<TestSocket> {
     return GetBuilder(
         init: TraderPriceController(),
         builder: (Controller) {
-          return ListView(
+          return GridView(
+            padding: const EdgeInsets.all(8),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              mainAxisExtent: 100,
+              childAspectRatio: 1,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
             children: [
-              ListTile(
-                title: const Text("bid"),
-                subtitle: Text(Controller.traderPrice.bid.toString()),
-                onTap: () {
-                  // traderPriceController.reset1();
-                  return null;
-                },
+              Column(
+                children: [
+                  Positioned(
+                    child: Container(
+                      height: 20,
+                      width: 200,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromARGB(255, 255, 222, 188),
+                            Color.fromARGB(255, 206, 118, 78),
+                            Color.fromARGB(255, 135, 91, 21),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          stops: [0.0, 0.1, 0.8],
+                        ),
+                      ),
+                      child: ListTile(
+                        title: const Text("spotno"),
+                        subtitle:
+                            Text(Controller.traderPrice.spotno.toString()),
+                        onTap: () {
+                          // traderPriceController.reset3();
+                          return null;
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromARGB(255, 251, 245, 51),
+                          Color.fromARGB(255, 255, 184, 70),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        stops: [0.0, 0.8],
+                        tileMode: TileMode.clamp,
+                      ),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
+                    ),
+                    child: ListTile(
+                      title: const Text("spotno"),
+                      subtitle: Text(Controller.traderPrice.spotno.toString()),
+                      onTap: () {
+                        // traderPriceController.reset3();
+                        return null;
+                      },
+                    ),
+                  ),
+                ],
               ),
-              ListTile(
-                title: const Text("ask"),
-                subtitle: Text(Controller.traderPrice.ask.toString()),
-                onTap: () {
-                  // traderPriceController.reset2();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 248, 198, 46),
+                      Color.fromARGB(255, 255, 138, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  // borderRadius: BorderRadius.all(Radius.circular(20)),
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("bid"),
+                  subtitle: Text(Controller.traderPrice.bid.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("ask99Bg1"),
-                subtitle: Text(Controller.traderPrice.ask99Bg1.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 164, 51),
+                      Color.fromARGB(255, 180, 120, 23),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("ask"),
+                  subtitle: Text(Controller.traderPrice.ask.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("bid99Bg1"),
-                subtitle: Text(Controller.traderPrice.bid99Bg1.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 167, 83, 27),
+                      Color.fromARGB(255, 241, 185, 97),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("ask96Bg1"),
+                  subtitle: Text(Controller.traderPrice.ask96Bg1.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("ask96Bg1"),
-                subtitle: Text(Controller.traderPrice.ask96Bg1.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("bid96Bg1"),
-                subtitle: Text(Controller.traderPrice.bid96Bg1.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("thb"),
-                subtitle: Text(Controller.traderPrice.thb.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("askAss"),
-                subtitle: Text(Controller.traderPrice.askAss.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("bidAss"),
-                subtitle: Text(Controller.traderPrice.bidAss.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("status"),
-                subtitle: Text(Controller.traderPrice.status.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
-              ListTile(
-                title: const Text("spotno"),
-                subtitle: Text(Controller.traderPrice.spotno.toString()),
-                onTap: () {
-                  // traderPriceController.reset3();
-                  return null;
-                },
+              Container(
+                padding: EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 251, 245, 51),
+                      Color.fromARGB(255, 255, 184, 70),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 0.8],
+                    tileMode: TileMode.clamp,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: ListTile(
+                  title: const Text("spotno"),
+                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  onTap: () {
+                    // traderPriceController.reset3();
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(
                 height: 20,

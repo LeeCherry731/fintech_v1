@@ -27,9 +27,13 @@ class TraderPriceController extends GetxController {
     socket.connect();
     socket.onConnect((data) => print("Socket connected"));
     print(socket.connected);
+
+    onTraderprice();
+  }
+
+  void onTraderprice() {
     socket.on("traderprice", (data) {
       traderPrice = TraderPrice.fromJson(data);
-      print(data['bid'].toString());
       update();
     });
   }
@@ -73,6 +77,7 @@ class TraderPriceController extends GetxController {
   }
 
   void disconnect() {
+    print("socket disconnected!!");
     socket.disconnect();
   }
 }
