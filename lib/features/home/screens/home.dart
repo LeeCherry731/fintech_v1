@@ -1,5 +1,5 @@
 import 'package:fintech_v1/features/home/screens/test_socket.dart';
-import 'package:fintech_v1/features/home/widgets/ListProfileInfo.dart';
+import 'package:fintech_v1/features/home/widgets/list_profile_info.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -57,11 +57,7 @@ class _HomeState extends State<Home> {
             Color(0xFF5C181D),
           ], radius: 0.9),
         ),
-        child: Column(
-          children: [
-            ListProfileInfo(widget: screens[currentIndex]),
-          ],
-        ),
+        child: ListProfileInfo(widget: screens[currentIndex]),
       ),
     );
   }
@@ -96,7 +92,9 @@ class BottomNavBar extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Positioned(
-              top: -18,
+              top: -30,
+              width: MediaQuery.of(context).size.width - 10,
+              height: 32,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -112,11 +110,17 @@ class BottomNavBar extends StatelessWidget {
                     tileMode: TileMode.clamp,
                   ),
                 ),
-                width: MediaQuery.of(context).size.width - 20,
-                height: 30,
+                child: const Center(
+                    child: Text(
+                  "LHC",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 158, 126, 77)),
+                )),
               )),
           SizedBox(
-            height: 90,
+            height: 80,
             child: BottomNavigationBar(
               unselectedItemColor: const Color.fromARGB(255, 245, 203, 131),
               unselectedLabelStyle: const TextStyle(
@@ -124,7 +128,7 @@ class BottomNavBar extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w400),
               type: BottomNavigationBarType.fixed,
-              iconSize: 45,
+              iconSize: 30,
               selectedItemColor: const Color.fromARGB(255, 253, 253, 253),
               showSelectedLabels: true,
               selectedLabelStyle: const TextStyle(

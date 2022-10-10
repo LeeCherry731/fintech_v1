@@ -15,10 +15,10 @@ class ListProfileInfo extends StatelessWidget {
           padding: const EdgeInsets.only(top: 20, left: 10),
           height: MediaQuery.of(context).size.height / 7,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
                   children: [
@@ -53,7 +53,6 @@ class ListProfileInfo extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const IconButton(
                       onPressed: null,
@@ -72,7 +71,6 @@ class ListProfileInfo extends StatelessWidget {
                       ),
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
                       children: const [
                         Text(
                           "TH",
@@ -100,11 +98,12 @@ class ListProfileInfo extends StatelessWidget {
             ),
           ),
         ),
-        Center(
+        Expanded(
           child: Container(
-            padding: const EdgeInsets.only(top: 40),
+            margin: const EdgeInsets.all(12),
+            padding: const EdgeInsets.only(top: 15),
             width: MediaQuery.of(context).size.width - 8,
-            height: MediaQuery.of(context).size.height - 200,
+            // height: MediaQuery.of(context).size.height - 400,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               gradient: const RadialGradient(colors: [

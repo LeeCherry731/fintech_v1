@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:fintech_v1/features/models/trader_price.dart';
 import 'package:get/get.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
