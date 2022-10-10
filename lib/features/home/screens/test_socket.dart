@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fintech_v1/features/models/trader_price.dart';
-import 'package:fintech_v1/features/services/trader_price_controller.dart';
+import 'package:fintech_v1/features/home/services/trader_price_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -19,19 +19,7 @@ class _TestSocketState extends State<TestSocket> {
   final traderPriceController = Get.put(TraderPriceController());
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    traderPriceController.connect();
-    Timer(Duration(seconds: 5), () {
-      traderPriceController.connect();
-      traderPriceController.onTraderprice();
-    });
-  }
-
-  @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     traderPriceController.disconnect();
   }
@@ -40,7 +28,7 @@ class _TestSocketState extends State<TestSocket> {
   Widget build(BuildContext context) {
     return GetBuilder(
         init: TraderPriceController(),
-        builder: (Controller) {
+        builder: (controller) {
           return GridView(
             padding: const EdgeInsets.all(8),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -75,7 +63,7 @@ class _TestSocketState extends State<TestSocket> {
                       child: ListTile(
                         title: const Text("spotno"),
                         subtitle:
-                            Text(Controller.traderPrice.spotno.toString()),
+                            Text(controller.traderPrice.spotno.toString()),
                         onTap: () {
                           // traderPriceController.reset3();
                           return null;
@@ -102,7 +90,7 @@ class _TestSocketState extends State<TestSocket> {
                     ),
                     child: ListTile(
                       title: const Text("spotno"),
-                      subtitle: Text(Controller.traderPrice.spotno.toString()),
+                      subtitle: Text(controller.traderPrice.spotno.toString()),
                       onTap: () {
                         // traderPriceController.reset3();
                         return null;
@@ -112,7 +100,7 @@ class _TestSocketState extends State<TestSocket> {
                 ],
               ),
               Container(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -130,9 +118,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("bid"),
-                  subtitle: Text(Controller.traderPrice.bid.toString()),
+                  subtitle: Text(controller.traderPrice.bid.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -154,9 +142,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("ask"),
-                  subtitle: Text(Controller.traderPrice.ask.toString()),
+                  subtitle: Text(controller.traderPrice.ask.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -178,9 +166,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("ask96Bg1"),
-                  subtitle: Text(Controller.traderPrice.ask96Bg1.toString()),
+                  subtitle: Text(controller.traderPrice.ask96Bg1.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -202,9 +190,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -226,9 +214,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -250,9 +238,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -274,9 +262,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -298,9 +286,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -322,9 +310,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
@@ -346,9 +334,9 @@ class _TestSocketState extends State<TestSocket> {
                 ),
                 child: ListTile(
                   title: const Text("spotno"),
-                  subtitle: Text(Controller.traderPrice.spotno.toString()),
+                  subtitle: Text(controller.traderPrice.spotno.toString()),
                   onTap: () {
-                    // traderPriceController.reset3();
+                    // traderPricecontroller.reset3();
                     return null;
                   },
                 ),
